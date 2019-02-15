@@ -1,0 +1,43 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+</head>
+<body>
+	<div class="container" th:fragment="portfolio">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>spring boot technology library</h2>
+				<hr class="star-primary" />
+			</div>
+		</div>
+		<div class="row">
+			<div
+				th:include="::portfolio_item" th:with="href='/lookAround',script='我是一个风骚的程序员',img='index/img/portfolio/cabin.png'"></div>		
+			<div
+				th:include="::portfolio_item" th:with="href='/lookAround',script='我是一个有逼格的设计师',img='index/img/portfolio/cake.png'"></div>
+			<div
+				th:include="::portfolio_item" th:with="href='/lookAround',script='我是一个有风格的设计师',img='index/img/portfolio/circus.png'"></div>
+			<div
+				th:include="::portfolio_item" th:with="href='/lookAround',script='我是一个游戏狂，看看我的收藏吧！',img='index/img/portfolio/game.png'"></div>
+			<div
+				th:include="::portfolio_item" th:with="href='/lookAround',script='我是一个保险柜..',img='index/img/portfolio/safe.png'"></div>
+			<div
+				th:include="::portfolio_item" th:with="href='/lookAround',script='我是宅男，我喜欢潜水..',img='index/img/portfolio/submarine.png'"></div>
+		</div>
+	</div>
+	<div th:fragment="portfolio_item">
+		<div class="col-sm-4 portfolio-item">
+			<a th:href="${href}" class="portfolio-link" data-toggle="modal">
+				<div class="caption">
+					<div class="caption-content">
+						<i class="fa fa-search-plus fa-3x"></i>
+						<p> <th th:text="#{script}" /></p>
+					</div>
+				</div> <img class="img-responsive" alt="" th:src="${img}"/>
+			</a>
+		</div>
+	</div>
+</body>
+</html>

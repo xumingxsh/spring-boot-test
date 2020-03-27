@@ -1,4 +1,4 @@
-package hi.xmr.springboot;
+package hi.xmr.springboot.config;
 
 import java.io.IOException;
 

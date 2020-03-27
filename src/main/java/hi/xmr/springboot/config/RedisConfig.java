@@ -5,10 +5,8 @@ import java.time.Duration;
 
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
-import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.cache.RedisCacheWriter;
@@ -22,10 +20,11 @@ import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-@Configuration
-@EnableCaching
+//@Configuration
+//@EnableCaching
 public class RedisConfig extends CachingConfigurerSupport{
-	
+
+	@Override
 	@Bean
 	public KeyGenerator keyGenerator() {
         return new KeyGenerator() {
@@ -51,7 +50,7 @@ public class RedisConfig extends CachingConfigurerSupport{
                  .builder(RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory))
                  .cacheDefaults(redisCacheConfiguration).build();
     }
-    
+
     @Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory) {
         StringRedisTemplate template = new StringRedisTemplate(factory);

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import hi.xmr.springboot.domain.User;
 import hi.xmr.springboot.domain.UserRepository;
-import hi.xmr.springboot.model.HttpResult;
+import hi.xmr.springboot.model.HiHttpResult;
 
 @RestController
 public class UserController {
@@ -26,9 +26,9 @@ public class UserController {
 
     @RequestMapping("/getUsers")
     @Cacheable(value="key-Users")
-    public HttpResult getUsers() {
+    public HiHttpResult getUsers() {
     	List<User> users=userRepository.findAll();
     	System.out.println("若下面没出现“无缓存的时候调用”字样且能打印出数据表示测试成功");
-        return HttpResult.onSuccess(users);
+        return HiHttpResult.onSuccess(users);
     }
 }

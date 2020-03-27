@@ -6,25 +6,25 @@ package hi.xmr.springboot.model;
  *
  * @param <T> 成功后返回的对象类型， 该类型要可以转换为JSON对象
  */
-public class HttpResult {
+public class HiHttpResult {
 	public final static int SUCCESS = 200;
 	public final static int SYSTEM_EXCEPTION = 500;
 	public final static int USER_EXCEPTION = 503;
 
-	public static <T> HttpResult onSuccess(T val) {
-		HttpResult ret = new HttpResult();
+	public static <T> HiHttpResult onSuccess(T val) {
+		HiHttpResult ret = new HiHttpResult();
 		ret.setStatus(SUCCESS);
 		ret.setData(val);
 		ret.setMesssage("");
 		return ret;
 	}
 
-	public static HttpResult onException(Exception ex) {
+	public static HiHttpResult onException(Exception ex) {
 		return onException(ex, true);
 	}
 
-	public static HttpResult onException(Exception ex, boolean isWant) {
-		HttpResult ret = new HttpResult();
+	public static HiHttpResult onException(Exception ex, boolean isWant) {
+		HiHttpResult ret = new HiHttpResult();
 		if (isWant) {
 			ret.setStatus(USER_EXCEPTION);
 		} else {
